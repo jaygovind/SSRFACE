@@ -156,7 +156,7 @@ namespace SMPAPI
          .AllowAnyMethod()
 
          );
-
+            app.UseStaticFiles();
             app.UseHttpsRedirection();
 
             app.UseRouting();
@@ -171,18 +171,22 @@ namespace SMPAPI
             //    c.RoutePrefix = "";
             //});
 
-            app.UseMvc(routes =>
+            //app.UseMvc(routes =>
+            //{
+            //    routes.MapRoute(
+            //        name: "default",
+            //        template: "{controller=UserDashboard}/{action=newsfeed}/{id?}");
+            //});
+
+
+            app.UseEndpoints(endpoints =>
             {
-                routes.MapRoute(
+                endpoints.MapControllerRoute(
                     name: "default",
-                    template: "{controller=UserDashboard}/{action=newsfeed}/{id?}");
+                    pattern: "{controller=UserDashboard}/{action=newsfeed}/{id?}");
             });
 
 
-        app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
         }
 
 
