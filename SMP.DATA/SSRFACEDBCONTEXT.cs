@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using SMP.Data.ModelForTables;
-
+using SSRFACE.DATA.ModelForTables;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -27,9 +27,11 @@ namespace SMP.DATA.Models
 
         }
 
-
-
+        public DbSet<UserPost> UserPosts { get; set; }
+        public virtual DbSet<Comment> Comments { get; set; }
+        public virtual DbSet<SubComment> SubComments { get; set; }
         public DbSet<Users> Users { get; set; }
+
 
         public DbSet<Status> Status { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)

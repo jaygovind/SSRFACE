@@ -12,7 +12,7 @@ namespace SMP.Repository.Repository
     public interface IRepository<T> where T : class
     {
         int? Update(T entity, params Expression<Func<T, object>>[] properties);
-        int? InsertAndGetId(T entity);
+        long? InsertAndGetId(T entity);
         void Add(T entities);
 
 

@@ -510,7 +510,7 @@ namespace SMP.Repository.Repository
             }
         }
 
-        public int? InsertAndGetId(T entity)
+        public long? InsertAndGetId(T entity)
         {
             try
             {
@@ -525,10 +525,17 @@ namespace SMP.Repository.Repository
 
             }
             //Returns primaryKey value
-            var idProperty = entity.GetType().GetProperty("Id").GetValue(entity, null);
-            return (int)idProperty;
+            var idProperty = GetKey(entity);
+            return (long)idProperty;
         }
+        // Entity Framework Core
+        public virtual long GetKey<T>(T entity)
+        {
+            var keyName = _context.Model.FindEntityType(typeof(T)).FindPrimaryKey().Properties
+                .Select(x => x.Name).Single();
 
+            return (long)entity.GetType().GetProperty(keyName).GetValue(entity, null);
+        }
         public virtual void Add(T entities)
         {
             try

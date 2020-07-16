@@ -28,6 +28,10 @@ using SMPAPI.Helpers;
 using SMPAPI.Model;
 using SMPAPI.Services;
 using SMPAPI.Settings;
+using SSRFACE.BAL.DTO;
+using SSRFACE.BAL.ILogic;
+using SSRFACE.BAL.Logic;
+using SSRFACE.DATA.ModelForTables;
 
 namespace SMPAPI
 {
@@ -46,9 +50,11 @@ namespace SMPAPI
             //Inject AppSettings
             services.Configure<ApplicationSettings>(Configuration.GetSection("ApplicationSettings"));
             services.AddMvc(option => option.EnableEndpointRouting = false).SetCompatibilityVersion(CompatibilityVersion.Latest);
+            services.AddSession(options => {
+                options.IdleTimeout = TimeSpan.FromMinutes(30);
+            });
 
-
-          services.AddDbContext<SSRFACEDBCONTEXT>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<SSRFACEDBCONTEXT>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             IdentityHelper.ConfigureService(services);
 
@@ -114,15 +120,19 @@ namespace SMPAPI
 
             services.AddScoped<IRepository<Users>, Repository<Users>>();
 
+            services.AddScoped<IRepository<PostDto>, Repository<PostDto>>();
 
-
-
+            services.AddScoped<IRepository<CommentsDTO>, Repository<CommentsDTO>>();
+            services.AddScoped<IRepository<Comment>, Repository<Comment>>();
+            services.AddScoped<IRepository<SubcommentOrReplyDTO>, Repository<SubcommentOrReplyDTO>>();
+            services.AddScoped<IRepository<SubComment>, Repository<SubComment>>();
 
 
 
             // Services
             services.AddTransient<IEmailService, EmailService>();
-
+            services.AddTransient<Ipost, PostLogic>();
+            services.AddTransient<Icomment, CommentLogic>();
             #endregion
 
             #region Add Dependency For Services
@@ -149,6 +159,8 @@ namespace SMPAPI
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseSession();
+
             UpdateDatabase(app);
             app.UseCors(builder =>
          builder.WithOrigins(Configuration["ApplicationSettings:Client_URL"].ToString())
