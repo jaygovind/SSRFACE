@@ -27,6 +27,8 @@ namespace SMP.Repository.Repository
         Task<int?> SaveChangesAsync();
         int? SaveChanges();
         IQueryable<T> Where(Expression<Func<T, bool>> predicate);
+
+        List<T> WhereFrom(Expression<Func<T, bool>> predicate);
         Task<int?> UpdateAsync(List<T> entity);
         Task<int?> InsertMultiAsync(List<T> entity);
         Task<T> ExecuteWithJsonResultAsync(string name, string parserString, params SqlParameter[] parameters);

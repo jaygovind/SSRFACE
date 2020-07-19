@@ -72,5 +72,9 @@ namespace SMP.DATA.Models
         /// Refresh Token
         /// </summary>
         public string RefreshToken { get; set; }
+
+        public string Gender { get; set; }
+
+        public string VCode { get; set; }
     }
 }

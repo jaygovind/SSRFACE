@@ -13,14 +13,14 @@ namespace SSRFACE.Controllers
     public class UserDashboardController : Controller
     {
         protected Ipost _Ipost { get; private set; }
-
+       
         public UserDashboardController(Ipost Ipost)
         {
             _Ipost = Ipost;
         }
         public IActionResult newsfeed()
         {
-            HttpContext.Session.SetInt32("Userid", 1);
+
             NewsFeedViewModel Viewmodeldata = new NewsFeedViewModel();
             Viewmodeldata.Postlistdata = _Ipost.Getposts();
 

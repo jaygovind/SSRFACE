@@ -14,6 +14,7 @@ namespace SSRFACE.BAL.DTO
         public string VideoUrl { get; set; }
 
         public long PostedByUserId { get; set; }
+        public string UserName { get; set; }
 
         public DateTime CreatedDate { get; set; }
 

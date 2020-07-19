@@ -58,7 +58,7 @@ namespace SSRFACE.Controllers
 
 
         [HttpGet]
-        public PartialViewResult GetSubComments(int ComID)
+        public ActionResult GetSubComments(long ComID)
         {
             GetsubcommorReplyVM SubCommentvmmodel = new GetsubcommorReplyVM();
             SubCommentvmmodel.Subcommntreplymodel = _Icomment.GetSubcommentOrReplyByCommentId(ComID);

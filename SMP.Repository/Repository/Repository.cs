@@ -143,6 +143,10 @@ namespace SMP.Repository.Repository
             return _context.Set<T>().Where(predicate);
         }
 
+        public List<T> WhereFrom(Expression<Func<T, bool>> predicate)
+        {
+            return _context.Set<T>().Where(predicate).ToList();
+        }
         /// <summary>
         /// Updates the asynchronous.
         /// </summary>

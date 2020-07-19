@@ -33,7 +33,7 @@ namespace SSRFACE.BAL.Logic
             _SubcommentOrReplyDTO = SubcommentOrReplyDTO;
             _SubComment = SubComment;
         }
-        public long? Addcomment(CommentsDTO data,int Postid,int userId)
+        public long? Addcomment(CommentsDTO data, long Postid, long userId)
         {
 
             try
@@ -56,7 +56,7 @@ namespace SSRFACE.BAL.Logic
         }
 
 
-        public long? AddSubcommentOrReply(SubcommentOrReplyDTO subcommentdata, int ComId, int userId)
+        public long? AddSubcommentOrReply(SubcommentOrReplyDTO subcommentdata, long ComId, long userId)
         {
 
             try
@@ -78,7 +78,7 @@ namespace SSRFACE.BAL.Logic
             return 0;
         }
 
-        public List<CommentsDTO> GetCommentsBypostid(int Postid)
+        public List<CommentsDTO> GetCommentsBypostid(long Postid)
         {
             var commentlist = new List<CommentsDTO>();
             try
@@ -87,7 +87,7 @@ namespace SSRFACE.BAL.Logic
                 var ParamsArray = new SqlParameter[3];
                 ParamsArray[0] = new SqlParameter() { ParameterName = "@Opcode", Value = 1, DbType = System.Data.DbType.Int32 };
                 ParamsArray[1] = new SqlParameter() { ParameterName = "@Userid", Value = 0, DbType = System.Data.DbType.Int32 };
-                ParamsArray[2] = new SqlParameter() { ParameterName = "@Postid", Value = Postid, DbType = System.Data.DbType.Int32 };
+                ParamsArray[2] = new SqlParameter() { ParameterName = "@Postid", Value = Postid, DbType = System.Data.DbType.Int64 };
                 commentlist = _CommentsDTO.ExecuteWithJsonResult(procName, "GetComment", ParamsArray);
                 return commentlist;
             }
@@ -98,7 +98,7 @@ namespace SSRFACE.BAL.Logic
             return commentlist;
         }
 
-        public List<SubcommentOrReplyDTO> GetSubcommentOrReplyByCommentId(int Commentid)
+        public List<SubcommentOrReplyDTO> GetSubcommentOrReplyByCommentId(long Commentid)
         {
             var commentlist = new List<SubcommentOrReplyDTO>();
             try
@@ -108,7 +108,7 @@ namespace SSRFACE.BAL.Logic
                 ParamsArray[0] = new SqlParameter() { ParameterName = "@Opcode", Value = 1, DbType = System.Data.DbType.Int32 };
                 ParamsArray[1] = new SqlParameter() { ParameterName = "@Userid", Value = 0, DbType = System.Data.DbType.Int32 };
                 ParamsArray[2] = new SqlParameter() { ParameterName = "@Postid", Value = 0, DbType = System.Data.DbType.Int32 };
-                ParamsArray[3] = new SqlParameter() { ParameterName = "@CommentId", Value = Commentid, DbType = System.Data.DbType.Int32 };
+                ParamsArray[3] = new SqlParameter() { ParameterName = "@CommentId", Value = Commentid, DbType = System.Data.DbType.Int64 };
                 commentlist = _SubcommentOrReplyDTO.ExecuteWithJsonResult(procName, "GetSubCommentOrReply", ParamsArray);
                 return commentlist;
             }

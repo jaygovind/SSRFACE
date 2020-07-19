@@ -252,6 +252,9 @@ namespace SMP.DATA.Migrations
                         .HasColumnType("nvarchar(100)")
                         .HasMaxLength(100);
 
+                    b.Property<string>("Gender")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
@@ -277,6 +280,9 @@ namespace SMP.DATA.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(200)")
                         .HasMaxLength(200);
+
+                    b.Property<string>("VCode")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("UserId");
 
@@ -311,14 +317,14 @@ namespace SMP.DATA.Migrations
                     b.Property<DateTime?>("CommentedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("CommentedUserID")
-                        .HasColumnType("int");
+                    b.Property<long?>("CommentedUserID")
+                        .HasColumnType("bigint");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("PostID")
-                        .HasColumnType("int");
+                    b.Property<long?>("PostID")
+                        .HasColumnType("bigint");
 
                     b.HasKey("ComID");
 
@@ -332,8 +338,8 @@ namespace SMP.DATA.Migrations
                         .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("ComentID")
-                        .HasColumnType("int");
+                    b.Property<long?>("ComentID")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("CommentMsg")
                         .HasColumnType("nvarchar(max)");
@@ -344,8 +350,8 @@ namespace SMP.DATA.Migrations
                     b.Property<bool>("Isdeleted")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("SubComUserID")
-                        .HasColumnType("int");
+                    b.Property<long?>("SubComUserID")
+                        .HasColumnType("bigint");
 
                     b.HasKey("SubComID");
 

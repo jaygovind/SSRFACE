@@ -1,16 +1,19 @@
 ﻿$(document).ready(function () {
 
     //Get All ReplyComment
-    $('.Reply').on('click', function ()
+    $('.Reply').on('click', function (e)
     {
         debugger;
         var ComID = $(this).attr('data-id');
-
+        e.stopPropagation();
+        e.preventDefault();
         $.ajax({
             type: 'GET',
             //url: '@Url.Action("GetSubComments", "Comments")',
             url: 'Comments/GetSubComments',
-            dataType: 'html',
+            contentType: "application/html; charset=utf-8",
+            cache: false,
+            datatype: "html",
             data: { ComID },
             success: function (response)
             {

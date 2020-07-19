@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\SMP.COMMON\SSRFACE.COMMON.csproj" />
     <ProjectReference Include="..\SMP.DATA\SSRFACE.DATA.csproj" />
     <ProjectReference Include="..\SMP.Repository\SSRFACE.Repository.csproj" />

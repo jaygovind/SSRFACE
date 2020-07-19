@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -28,6 +29,7 @@ using SMPAPI.Helpers;
 using SMPAPI.Model;
 using SMPAPI.Services;
 using SMPAPI.Settings;
+using SSRFACE.BAL.AutoMappingcls;
 using SSRFACE.BAL.DTO;
 using SSRFACE.BAL.ILogic;
 using SSRFACE.BAL.Logic;
@@ -48,6 +50,8 @@ namespace SMPAPI
         public void ConfigureServices(IServiceCollection services)
         {
             //Inject AppSettings
+
+            services.AddAutoMapper(typeof(AutoMapping));
             services.Configure<ApplicationSettings>(Configuration.GetSection("ApplicationSettings"));
             services.AddMvc(option => option.EnableEndpointRouting = false).SetCompatibilityVersion(CompatibilityVersion.Latest);
             services.AddSession(options => {
@@ -126,13 +130,19 @@ namespace SMPAPI
             services.AddScoped<IRepository<Comment>, Repository<Comment>>();
             services.AddScoped<IRepository<SubcommentOrReplyDTO>, Repository<SubcommentOrReplyDTO>>();
             services.AddScoped<IRepository<SubComment>, Repository<SubComment>>();
-
+            services.AddScoped<IRepository<UserPost>, Repository<UserPost>>();
+            services.AddScoped<IRepository<Users>, Repository<Users>>();
+            services.AddScoped<IRepository<UserSSODTO>, Repository<UserSSODTO>>();
 
 
             // Services
             services.AddTransient<IEmailService, EmailService>();
             services.AddTransient<Ipost, PostLogic>();
             services.AddTransient<Icomment, CommentLogic>();
+            services.AddTransient<Iuserpostorstatus, userpostorstatusLogic>();
+            services.AddTransient<IAccount, AccountLogic>();
+
+
             #endregion
 
             #region Add Dependency For Services
@@ -195,7 +205,7 @@ namespace SMPAPI
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=UserDashboard}/{action=newsfeed}/{id?}");
+                    pattern: "{controller=Account}/{action=Register}/{id?}");
             });
 
 

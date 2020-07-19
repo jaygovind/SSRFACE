@@ -6,7 +6,7 @@ namespace SSRFACE.BAL.DTO
 {
    public class SubcommentOrReplyDTO
     {
-        public int SubComID { get; set; }
+        public long SubComID { get; set; }
         public DateTime CommentedDate { get; set; }
 
         public string CommentMsg { get; set; }

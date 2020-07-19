@@ -14,8 +14,8 @@ namespace SSRFACE.DATA.ModelForTables
         public long SubComID { get; set; }
         public string CommentMsg { get; set; }
         public DateTime? CommentedDate { get; set; }
-        public int? ComentID { get; set; }
-        public int? SubComUserID { get; set; }
+        public long? ComentID { get; set; }
+        public long? SubComUserID { get; set; }
 
         public bool Isdeleted { get; set; } = false;
     }

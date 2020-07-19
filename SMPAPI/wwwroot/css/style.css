@@ -20,7 +20,7 @@
       - Image Divider
       - Site Facts
       - Live Feed
-    - Newsfeed 
+    - Newsfeed
       - Left Sidebar
       - Right Sidebar
       - Create Post Box
@@ -28,7 +28,7 @@
       - Nearby People
       - Friend List
       - Chat Room
-      - Media: image and video 
+      - Media: image and video
     - Timeline
       - Timeline Sidebar
       - Post Date
@@ -206,6 +206,8 @@ img.profile-photo-sm{
 	width: 40px;
 	border-radius: 50%;
 }
+
+
 
 img.profile-photo-xs{
   height: 30px;
@@ -894,14 +896,14 @@ ul.online-users li span.online-dot{
   Post Contents CSS
   ==================================================*/
 
-.post-content{
-  background: #f8f8f8;
-  border-radius: 4px;
-  width: 100%;
-  border: 1px solid #f1f2f2;
-  margin-bottom: 20px;
-  overflow: hidden;
-  position: relative;
+.post-content {
+    /*background: #f8f8f8;*/
+    background: #d7dfd7;
+    width: 100%;
+    border: 1px solid #f1f2f2;
+    margin-bottom: 20px;
+    overflow: hidden;
+    position: relative;
 }
 
 .post-content img.post-image, video.post-video, .google-maps{
@@ -1656,7 +1658,7 @@ ul.contact li i{
 @media only screen and (max-width : 992px) {
 
   section h1.section-title{font-size: 175px; margin-bottom: -40px;}
-  
+
   #features .feature-item{margin-bottom: 20px;}
 
   #features .item{margin-bottom: 20px;}
@@ -1676,7 +1678,7 @@ ul.contact li i{
   .sign-up-form{left: 0; right: 0; margin: auto;}
 
   section h1.section-title{font-size: 90px !important; margin-bottom: 0 !important;}
-  
+
   #features .feature-item{margin-bottom: 20px;}
 
   #site-facts .circle{width: 100%; border-radius: 1000px;}

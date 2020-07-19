@@ -9,5 +9,7 @@ namespace SSRFACE.ViewModels
     public class NewsFeedViewModel
     {
         public List<PostDto> Postlistdata { get; set; }
+
+        public PostDto NewPostdata { get; set; }
     }
 }

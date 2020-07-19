@@ -7,11 +7,11 @@ namespace SSRFACE.BAL.ILogic
 {
    public interface Icomment
     {
-        long? AddSubcommentOrReply(SubcommentOrReplyDTO subcommentdata, int ComId, int userId);
-        long? Addcomment(CommentsDTO data, int Postid, int userId);
+        long? AddSubcommentOrReply(SubcommentOrReplyDTO subcommentdata, long ComId, long userId);
+        long? Addcomment(CommentsDTO data, long Postid, long userId);
 
-        List<CommentsDTO> GetCommentsBypostid(int Postid);
+        List<CommentsDTO> GetCommentsBypostid(long Postid);
 
-        List<SubcommentOrReplyDTO> GetSubcommentOrReplyByCommentId(int Commentid);
+        List<SubcommentOrReplyDTO> GetSubcommentOrReplyByCommentId(long Commentid);
     }
 }
