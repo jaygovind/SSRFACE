@@ -10,7 +10,7 @@
         $.ajax({
             type: 'GET',
             //url: '@Url.Action("GetSubComments", "Comments")',
-            url: 'Comments/GetSubComments',
+            url: '/Comments/GetSubComments',
             contentType: "application/html; charset=utf-8",
             cache: false,
             datatype: "html",

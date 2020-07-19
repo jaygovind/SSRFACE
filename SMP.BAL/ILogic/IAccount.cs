@@ -10,5 +10,7 @@ namespace SSRFACE.BAL.ILogic
 
         int Register(RegistrationDTO userRegister);
         UserSSODTO Login(RegistrationDTO Login);
+
+        UserSSODTO GetUserDetailsByUserId(long Userid);
     }
 }

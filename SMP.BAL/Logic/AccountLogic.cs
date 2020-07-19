@@ -105,5 +105,24 @@ namespace SSRFACE.BAL.Logic
             }
 
         }
-    }
+
+
+        public UserSSODTO GetUserDetailsByUserId(long Userid)
+        {
+            UserSSODTO objuserssr = new UserSSODTO();
+            try
+            {
+                var UserQuery = (from s in _Users where (s.UserId == Userid) select s).FirstOrDefault();
+
+                objuserssr.UserName = UserQuery.UserName;
+
+                return objuserssr;
+            }
+            catch(Exception ex)
+            {
+                return objuserssr;
+            }
+
+        }
+   }
 }

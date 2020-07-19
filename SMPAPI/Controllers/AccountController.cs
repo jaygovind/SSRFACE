@@ -72,5 +72,13 @@ namespace SSRFACE.Controllers
                 return RedirectToAction("Register", "Account");
             }
         }
+
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("Register", "Account");
+        }
+
+
     }
 }
