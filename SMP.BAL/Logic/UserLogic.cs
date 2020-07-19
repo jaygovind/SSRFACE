@@ -314,14 +314,8 @@ namespace SMP.BAL.Logic
 
         public List<UsersDTO> GetIsadminApproveddata(string userid)
         {
-            string procName = SPROC_Names.Sp_dashboard.ToString();
-            var ParamsArray = new SqlParameter[4];
-            ParamsArray[0] = new SqlParameter() { ParameterName = "@opcode", Value = 2, DbType = System.Data.DbType.String };
-            ParamsArray[1] = new SqlParameter() { ParameterName = "@Roleid", Value = "", DbType = System.Data.DbType.String };
-            ParamsArray[2] = new SqlParameter() { ParameterName = "@RoleName", Value = "", DbType = System.Data.DbType.String };
-            ParamsArray[3] = new SqlParameter() { ParameterName = "@UserId", Value = userid, DbType = System.Data.DbType.String };
-            var UserDtoList = _userDtoRepository.ExecuteWithJsonResult(procName, "IsadminApprovedData", ParamsArray);
-            return UserDtoList;
+
+            return null;
         }
 
         public List<UserRoleDTO> CreateRole(string  rolename)
@@ -331,14 +325,8 @@ namespace SMP.BAL.Logic
                 throw new ArgumentNullException("role");
             }
             IdentityRole roleobj = new IdentityRole();
-            Guid guid = Guid.NewGuid();
-            string procName = SPROC_Names.Sp_CreateRole.ToString();
-            var ParamsArray = new SqlParameter[3];
-            ParamsArray[0] = new SqlParameter() { ParameterName = "@opcode", Value = 1, DbType = System.Data.DbType.String };
-            ParamsArray[1] = new SqlParameter() { ParameterName = "@Roleid", Value = guid.ToString(), DbType = System.Data.DbType.String };
-            ParamsArray[2] = new SqlParameter() { ParameterName = "@RoleName", Value = rolename, DbType = System.Data.DbType.String };
-            var UserRoleList = _UserRoleDTO.ExecuteWithJsonResult(procName, "UserRole", ParamsArray);
-            return UserRoleList;
+
+            return null;
 
 
             // roleobj.Name = rolename;
@@ -349,13 +337,7 @@ namespace SMP.BAL.Logic
         {
             try
             {
-                string procName = SPROC_Names.Sp_CreateRole.ToString();
-                var ParamsArray = new SqlParameter[3];
-                ParamsArray[0] = new SqlParameter() { ParameterName = "@opcode", Value = 2, DbType = System.Data.DbType.Int32 };
-                ParamsArray[1] = new SqlParameter() { ParameterName = "@Roleid", Value = "", DbType = System.Data.DbType.String };
-                ParamsArray[2] = new SqlParameter() { ParameterName = "@RoleName", Value = "", DbType = System.Data.DbType.String };
-                var UserRoleList = _UserRoleDTO.ExecuteWithJsonResult(procName, "UserRole", ParamsArray);
-                return UserRoleList;
+                return null;
 
             }
             catch(Exception ex)
@@ -369,22 +351,10 @@ namespace SMP.BAL.Logic
         {
             try
             {
-                string procName = SPROC_Names.Sp_CreateRole.ToString();
-                var ParamsArray = new SqlParameter[4];
-                ParamsArray[0] = new SqlParameter() { ParameterName = "@opcode", Value = 6, DbType = System.Data.DbType.Int32 };
-                ParamsArray[1] = new SqlParameter() { ParameterName = "@Roleid", Value = roleid, DbType = System.Data.DbType.String };
-                ParamsArray[2] = new SqlParameter() { ParameterName = "@RoleName", Value = "", DbType = System.Data.DbType.String };
-                ParamsArray[3] = new SqlParameter() { ParameterName = "@UserId", Value = "", DbType = System.Data.DbType.String };
-                var UserRoleList = _userDtoRepository.ExecuteWithJsonResult(procName, "GetRoleByroleid", ParamsArray);
 
-                if (UserRoleList != null)
-                {
-                    return UserRoleList.FirstOrDefault();
-                }
-                else
-                {
+
                     return null;
-                }
+
             }
             catch (Exception ex)
             {
@@ -396,13 +366,7 @@ namespace SMP.BAL.Logic
         {
             try
             {
-                string procName = SPROC_Names.Sp_CreateRole.ToString();
-                var ParamsArray = new SqlParameter[4];
-                ParamsArray[0] = new SqlParameter() { ParameterName = "@opcode", Value = 3, DbType = System.Data.DbType.Int32 };
-                ParamsArray[1] = new SqlParameter() { ParameterName = "@Roleid", Value = Roleid, DbType = System.Data.DbType.String };
-                ParamsArray[2] = new SqlParameter() { ParameterName = "@RoleName", Value = "", DbType = System.Data.DbType.String };
-                ParamsArray[3] = new SqlParameter() { ParameterName = "@UserId", Value = UserId, DbType = System.Data.DbType.String };
-                var UserRoleList = _UserRoleDTO.ExecuteWithJsonResult(procName, "UserRole", ParamsArray);
+
 
                 return 1;
             }
@@ -416,15 +380,9 @@ namespace SMP.BAL.Logic
         {
             try
             {
-                string procName = SPROC_Names.Sp_CreateRole.ToString();
-                var ParamsArray = new SqlParameter[4];
-                ParamsArray[0] = new SqlParameter() { ParameterName = "@opcode", Value = 4, DbType = System.Data.DbType.Int32 };
-                ParamsArray[1] = new SqlParameter() { ParameterName = "@Roleid", Value = "", DbType = System.Data.DbType.String };
-                ParamsArray[2] = new SqlParameter() { ParameterName = "@RoleName", Value = "", DbType = System.Data.DbType.String };
-                ParamsArray[3] = new SqlParameter() { ParameterName = "@UserId", Value = "", DbType = System.Data.DbType.String };
-                var UserRoleList = _userDtoRepository.ExecuteWithJsonResult(procName, "AssignRoleToUser", ParamsArray);
 
-                return UserRoleList;
+
+                return null;
             }
             catch (Exception ex)
             {
@@ -437,15 +395,9 @@ namespace SMP.BAL.Logic
         {
             try
             {
-                string procName = SPROC_Names.Sp_CreateRole.ToString();
-                var ParamsArray = new SqlParameter[4];
-                ParamsArray[0] = new SqlParameter() { ParameterName = "@opcode", Value = 5, DbType = System.Data.DbType.Int32 };
-                ParamsArray[1] = new SqlParameter() { ParameterName = "@Roleid", Value = "", DbType = System.Data.DbType.String };
-                ParamsArray[2] = new SqlParameter() { ParameterName = "@RoleName", Value = "", DbType = System.Data.DbType.String };
-                ParamsArray[3] = new SqlParameter() { ParameterName = "@UserId", Value = userid, DbType = System.Data.DbType.String };
-                var UserRoleList = _userDtoRepository.ExecuteWithJsonResult(procName, "GetRoleOfUsers", ParamsArray);
 
-                return UserRoleList;
+
+                return null;
             }
             catch (Exception ex)
             {

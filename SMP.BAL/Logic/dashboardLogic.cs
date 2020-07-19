@@ -22,18 +22,6 @@ namespace SMP.BAL.Logic
         {
             DashboardDto retutndata = new DashboardDto();
 
-            string procName = SPROC_Names.Sp_dashboard.ToString();
-            var ParamsArray = new SqlParameter[1];
-            ParamsArray[0] = new SqlParameter() { ParameterName = "@opcode", Value = 1, DbType = System.Data.DbType.String };
-
-            var UserRoleList = _DashboardDto.ExecuteWithJsonResult(procName, "Counts", ParamsArray);
-
-            if (UserRoleList != null )
-            {
-                retutndata.Usercount = UserRoleList[0].Usercount;
-                retutndata.RolesCount = UserRoleList[0].RolesCount;
-                retutndata.RolesAssigntousercount = UserRoleList[0].RolesAssigntousercount;
-            }
 
             return retutndata;
         }

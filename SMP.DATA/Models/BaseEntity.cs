@@ -19,7 +19,7 @@ namespace SMP.DATA.Models
         /// <value>
         /// The created by.
         /// </value>
-        public long CreatedBy { get; set; }
+        public long? CreatedBy { get; set; }
 
         /// <summary>
         /// Gets or sets the created date.
